@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.component }}
+  labels:
+    component: {{ .Values.component }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: {{ .Values.component }}
+  template:
+    metadata:
+      labels:
+        component: {{ .Values.component }}
+    spec:
+      containers:
+      - name: {{ .Values.component }}
+        image: rkalluru/{{ .Values.component }}
